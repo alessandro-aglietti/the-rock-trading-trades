@@ -29,7 +29,7 @@ self.addEventListener('fetch', function(event) {
     event.respondWith(
       new Response('magic goes here', {
        headers: { 'Content-Type': 'text/plain' }
-     });
+     })
     );
   }
 });
