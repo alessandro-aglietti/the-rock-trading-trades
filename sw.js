@@ -30,7 +30,7 @@ self.addEventListener('activate', function(event) {
 self.addEventListener('fetch', function(event) {
   console.log(event.request.url);
   if (/\.sw$/.test(event.request.url)) {
-    pusher();
+    pusherr();
     event.respondWith(
       new Response('magic goes here', {
        headers: { 'Content-Type': 'text/plain' }
@@ -39,4 +39,4 @@ self.addEventListener('fetch', function(event) {
   }
 });
 
-pusher();
+pusherr();
