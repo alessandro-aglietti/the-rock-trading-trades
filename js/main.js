@@ -2,39 +2,33 @@ var Notify;
 
 $(function(){
   console.log("onload");
-  Notify = window.Notify.default;
 
-  if (!Notify.needsPermission) {
-    onPermissionGranted();
+  if (!("Notification" in window)) {
+    alert("This browser does not support desktop notification");
+    return;
+  } else if (Notification.permission === "granted") {
+    // If it's okay let's create a notification
+    $("#enable").remove();
   }
 
   $("#enable").on('click', function(){
-    if (!Notify.needsPermission) {
-      onPermissionGranted();
-    } else if (Notify.isSupported()) {
-        Notify.requestPermission(onPermissionGranted, onPermissionDenied);
+    if (Notification.permission !== 'denied') {
+      Notification.requestPermission(function (permission) {
+        // If the user accepts, let's create a notification
+        if (permission === "granted") {
+          if ('serviceWorker' in navigator) {
+           console.log('Service Worker is supported');
+           navigator.serviceWorker.register('/js/sw.js').then(function(reg) {
+             console.log(':^)', reg);
+             // TODO
+           }).catch(function(err) {
+             console.log(':^(', err);
+           });
+          }
+        }
+      });
     } else {
-      alert("browser doesn't support notification api, try latest chrome!");
+      alert("hai bloccato le notifiche scoglio!");
     }
   });
 });
-
-function onPermissionGranted() {
-    console.log('Permission has been granted by the user');
-    $("#enable").remove();
-    if ('serviceWorker' in navigator) {
-     console.log('Service Worker is supported');
-     navigator.serviceWorker.register('js/sw.js').then(function(reg) {
-       console.log(':^)', reg);
-       // TODO
-     }).catch(function(err) {
-       console.log(':^(', err);
-     });
-    } else {
-      alert("browser doesn't support service workers, try latest chrome!");
-    }
-}
-
-function onPermissionDenied() {
-    console.warn('Permission has been denied by the user');
-}
