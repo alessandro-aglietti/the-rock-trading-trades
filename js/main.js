@@ -41,7 +41,7 @@ function gogo() {
   $("#magic").css("display", "block");
   if ('serviceWorker' in navigator) {
    console.log('Service Worker is supported');
-   navigator.serviceWorker.register('../sw.js', {scope: './'}).then(function(reg) {
+   navigator.serviceWorker.register('sw.js', {scope: './'}).then(function(reg) {
      console.log(':^)', reg);
      // TODO
    }).catch(function(err) {
