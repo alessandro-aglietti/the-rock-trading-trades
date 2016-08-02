@@ -17,6 +17,8 @@ $(function(){
         // If the user accepts, let's create a notification
         if (permission === "granted") {
           gogo();
+        } else {
+          alert("hai bloccato le notifiche scoglio!");
         }
       });
     } else {
