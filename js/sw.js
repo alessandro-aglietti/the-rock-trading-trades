@@ -24,7 +24,12 @@ self.addEventListener('activate', function(event) {
       }
     });
 });
-self.addEventListener('push', function(event) {
-  console.log('Push message received', event);
-  // TODO
+self.addEventListener('fetch', function(event) {
+  if (/\.sw$/.test(event.request.url)) {
+    event.respondWith(
+      new Response('magic goes here', {
+       headers: { 'Content-Type': 'text/plain' }
+     });
+    );
+  }
 });

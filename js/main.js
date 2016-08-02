@@ -11,6 +11,15 @@ $(function(){
     gogo();
   }
 
+  $("#magic").on('click', function(){
+    $.ajax({
+      url : "magic.sw",
+      success: function(data){
+        console.log(data);
+      }
+    });
+  });
+
   $("#enable").on('click', function(){
     if (Notification.permission !== 'denied') {
       Notification.requestPermission(function (permission) {
@@ -29,6 +38,7 @@ $(function(){
 
 function gogo() {
   $("#enable").remove();
+  $("#magic").css("display", "block");
   if ('serviceWorker' in navigator) {
    console.log('Service Worker is supported');
    navigator.serviceWorker.register('js/sw.js').then(function(reg) {
