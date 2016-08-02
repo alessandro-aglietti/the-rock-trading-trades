@@ -8,7 +8,7 @@ $(function(){
     return;
   } else if (Notification.permission === "granted") {
     // If it's okay let's create a notification
-    $("#enable").remove();
+    gogo();
   }
 
   $("#enable").on('click', function(){
@@ -16,15 +16,7 @@ $(function(){
       Notification.requestPermission(function (permission) {
         // If the user accepts, let's create a notification
         if (permission === "granted") {
-          if ('serviceWorker' in navigator) {
-           console.log('Service Worker is supported');
-           navigator.serviceWorker.register('js/sw.js').then(function(reg) {
-             console.log(':^)', reg);
-             // TODO
-           }).catch(function(err) {
-             console.log(':^(', err);
-           });
-          }
+          gogo();
         }
       });
     } else {
@@ -32,3 +24,16 @@ $(function(){
     }
   });
 });
+
+function gogo() {
+  $("#enable").remove();
+  if ('serviceWorker' in navigator) {
+   console.log('Service Worker is supported');
+   navigator.serviceWorker.register('js/sw.js').then(function(reg) {
+     console.log(':^)', reg);
+     // TODO
+   }).catch(function(err) {
+     console.log(':^(', err);
+   });
+  }
+}
