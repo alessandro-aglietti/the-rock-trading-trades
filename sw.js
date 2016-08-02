@@ -1,4 +1,4 @@
-importScripts("vendor/pusher.min.js");
+importScripts("js/vendor/pusher.min.js");
 
 console.log('Started', self);
 self.addEventListener('install', function(event) {
@@ -18,7 +18,7 @@ self.addEventListener('activate', function(event) {
         var text = data.type + " " + data.value;
         self.registration.showNotification(text, {
           body: text,
-          icon: "../apple-touch-icon.png",
+          icon: "apple-touch-icon.png",
           tag: "new-trade"
         });
       }
