@@ -13,7 +13,7 @@ function last_ten_avg(now) {
     tot+=last_ten[i];
   }
 
-  return tot/(last_ten.length+1);
+  return tot/last_ten.length;
 }
 
 function pusherr(){
@@ -28,7 +28,7 @@ function pusherr(){
       if ( data.symbol === "BTCEUR") {
         var title = data.value + "€ ~ " + last_ten_avg(data.value) + "€";
         self.registration.showNotification(title, {
-          body: data.volume + "€ per" + data.quantity + "BTC",
+          body: data.volume + "€ per " + data.quantity + "BTC",
           icon: "apple-touch-icon.png",
           tag: "new-trade"
         });
