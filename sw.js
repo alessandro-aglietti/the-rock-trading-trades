@@ -1,6 +1,20 @@
 importScripts("js/vendor/pusher.min.js");
 
 var pusher;
+var last_ten = [];
+
+function last_ten_avg(now) {
+  if ( last_ten.length > 10 ) {
+    last_ten.splice(-1, 1);
+  }
+  last_ten.push(now);
+  tot = 0;
+  for(var i=0; i<last_ten.length; i++){
+    tot+=last_ten[i];
+  }
+
+  return tot/(last_ten.length+1);
+}
 
 function pusherr(){
   if( !pusher ) {
@@ -9,12 +23,12 @@ function pusherr(){
     });
 
     var channel = pusher.subscribe('currency');
-    channel.bind('new_offer', function(data) {
+    channel.bind('last_trade', function(data) {
       console.log(data);
       if ( data.symbol === "BTCEUR") {
-        var text = data.type + " " + data.value;
-        self.registration.showNotification(text, {
-          body: text,
+        var title = data.value + "€ ~ " + last_ten_avg(data.value) + "€";
+        self.registration.showNotification(title, {
+          body: data.volume + "€ per" + data.quantity + "BTC",
           icon: "apple-touch-icon.png",
           tag: "new-trade"
         });
