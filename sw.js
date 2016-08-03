@@ -13,7 +13,7 @@ function last_ten_avg(now) {
     tot+=last_ten[i];
   }
 
-  return tot/last_ten.length;
+  return Math.round((tot/last_ten.length) * 100) / 100;
 }
 
 function pusherr(){
