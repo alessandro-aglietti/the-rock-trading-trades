@@ -1,0 +1,22 @@
+{ symbol: 'BTCEUR',
+  quantity: 0.5,
+  value: 523.99,
+  volume: 261.99,
+  time: '2016-08-04T10:49:56+02:00',
+  diff: 2.29,
+  dark: false }
+/home/on/Documents/the-rock-trading-trades/pusher-node/index.js:10
+    var title = data.value + "€ ~ " + last_ten_avg(data.value) + "€";
+                                      ^
+
+ReferenceError: last_ten_avg is not defined
+    at /home/on/Documents/the-rock-trading-trades/pusher-node/index.js:10:39
+    at Channel.Dispatcher.emit (/home/on/Documents/the-rock-trading-trades/pusher-node/node_modules/pusher-js/dist/node/pusher.js:1050:34)
+    at Channel.handleEvent (/home/on/Documents/the-rock-trading-trades/pusher-node/node_modules/pusher-js/dist/node/pusher.js:2635:19)
+    at /home/on/Documents/the-rock-trading-trades/pusher-node/node_modules/pusher-js/dist/node/pusher.js:122:30
+    at ConnectionManager.Dispatcher.emit (/home/on/Documents/the-rock-trading-trades/pusher-node/node_modules/pusher-js/dist/node/pusher.js:1050:34)
+    at message (/home/on/Documents/the-rock-trading-trades/pusher-node/node_modules/pusher-js/dist/node/pusher.js:2978:24)
+    at Connection.Dispatcher.emit (/home/on/Documents/the-rock-trading-trades/pusher-node/node_modules/pusher-js/dist/node/pusher.js:1050:34)
+    at listeners.message (/home/on/Documents/the-rock-trading-trades/pusher-node/node_modules/pusher-js/dist/node/pusher.js:2397:28)
+    at TransportConnection.Dispatcher.emit (/home/on/Documents/the-rock-trading-trades/pusher-node/node_modules/pusher-js/dist/node/pusher.js:1050:34)
+    at TransportConnection.onMessage (/home/on/Documents/the-rock-trading-trades/pusher-node/node_modules/pusher-js/dist/node/pusher.js:963:15)
