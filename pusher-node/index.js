@@ -25,7 +25,7 @@ channel.bind('last_trade', function(data) {
     var title = data.value + "€ ~ " + last_ten_avg(data.value) + "€";
     var body = data.volume + "€ per " + data.quantity + "BTC";
 
-    var cmd = "notifiy-send '" +  title + "' '" + body + "''";
+    var cmd = "notify-send -i ~/Documents/the-rock-trading-trades/pusher-node/trt32.png '" +  title + "' '" + body + "'";
     console.log(cmd);
 
     exec(cmd, function(error, stdout, stderr) {
