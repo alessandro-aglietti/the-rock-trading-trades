@@ -7,3 +7,8 @@ in combo with https://launchpad.net/recent-notifications so we can have the last
 
 would be better if
 https://blueprints.launchpad.net/recent-notifications/+spec/blacklist-filter
+
+![alt tag](https://raw.githubusercontent.com/alessandro-aglietti/the-rock-trading-trades/pusher-node/pusher-node/Selection_043.png)
+
+![alt tag](https://raw.githubusercontent.com/alessandro-aglietti/the-rock-trading-trades/pusher-node/pusher-node/Selection_042.png)
+
