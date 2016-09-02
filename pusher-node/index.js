@@ -19,6 +19,9 @@ function do_last_ten_avg(now) {
   var last_ten_avg_new = Math.round((tot/last_ten.length) * 100) / 100;
 
   last_ten_avg = (!last_ten_avg) ? last_ten_avg_new : (last_ten_avg+last_ten_avg_new) / 2;
+
+  last_ten_avg = Math.round(last_ten_avg * 100) / 100;
+
   return last_ten_avg;
 }
 
