@@ -1,5 +1,0 @@
-in combo with
-
-  746  sudo add-apt-repository ppa:jconti/recent-notifications
-  747  sudo apt-get update
-  748  sudo apt-get install indicator-notifications
