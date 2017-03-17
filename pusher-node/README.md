@@ -16,3 +16,9 @@ sudo apt-get install indicator-notifications
 
 would be better if
 https://blueprints.launchpad.net/recent-notifications/+spec/blacklist-filter
+
+to do blacklist you need
+sudo apt-get install dconf-tools
+run dconf-editor
+and setup like this
+![alt tag](https://raw.githubusercontent.com/alessandro-aglietti/the-rock-trading-trades/pusher-node/pusher-node/Selection_155.png)
