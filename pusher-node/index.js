@@ -1,7 +1,7 @@
 var Pusher = require('pusher-js/node');
 var exec = require('child_process').exec;
 
-var pusher = new Pusher("8458eb6fbd288f0cf3d8");
+var pusher = new Pusher("bb1fafdf79a00453b5af");
 
 var last_ten = [];
 var last_ten_avg = false;
@@ -54,7 +54,7 @@ channel.bind('last_trade', function(data) {
   console.log(data);
   if ( data.symbol === "BTCEUR") {
     var title = data.value + "€ ~ " + do_last_ten_avg(data.value) + "€";
-    var body = data.volume + "€ per " + data.quantity + "BTC";
+    var body = data.volume + "€ per " + data.quantity + "Ƀ";
 
     var cmd = "notify-send -i " + __dirname + "/trt32." + level(data.value) + ".png '" +  title + "' '" + body + "'";
     console.log(cmd);
