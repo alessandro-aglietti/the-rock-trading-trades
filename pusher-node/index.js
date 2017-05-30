@@ -57,7 +57,8 @@ channel.bind( 'last_trade', function ( data ) {
     var cmd2usd      = "curl -s http://api.fixer.io/latest?base=EUR | jq '.rates.USD' | awk '{print $0*" + last_ten_avg + "}'";
     exec( cmd2usd, function ( error, cmd2usd_stdout, stderr ) {
       var title = data.value + "€ ~ " + last_ten_avg + "€/" + cmd2usd_stdout.trim() + "$";
-      var body  = data.volume + "€ per " + data.quantity + "Ƀ";
+      var body  = data.volume + "€ per " + data.quantity + "Ƀ\n";
+      body  += new Date() + "";
 
       var cmd = "notify-send -i " + __dirname + "/trt32." + level( data.value ) + ".png '" + title + "' '" + body + "'";
       console.log( cmd );
