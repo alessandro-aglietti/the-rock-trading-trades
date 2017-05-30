@@ -58,7 +58,7 @@ channel.bind( 'last_trade', function ( data ) {
     exec( cmd2usd, function ( error, cmd2usd_stdout, stderr ) {
       var title = data.value + "€ ~ " + last_ten_avg + "€/" + cmd2usd_stdout.trim() + "$";
       var body  = data.volume + "€ per " + data.quantity + "Ƀ\n";
-      body  += new Date() + "";
+      body  += data.time;
 
       var cmd = "notify-send -i " + __dirname + "/trt32." + level( data.value ) + ".png '" + title + "' '" + body + "'";
       console.log( cmd );
