@@ -55,16 +55,20 @@ channel.bind( 'last_trade', function ( data ) {
   if ( data.symbol === "BTCEUR" ) {
     var last_ten_avg = do_last_ten_avg( data.value );
     var cmd2usd      = "curl -s http://api.fixer.io/latest?base=EUR | jq '.rates.USD' | awk '{print $0*" + last_ten_avg + "}'";
+    var cmd2jpy      = "curl -s http://api.fixer.io/latest?base=EUR | jq '.rates.USD' | awk '{print $0*" + last_ten_avg + "}'";
     exec( cmd2usd, function ( error, cmd2usd_stdout, stderr ) {
-      var title = data.value + "€ ~ " + last_ten_avg + "€/" + cmd2usd_stdout.trim() + "$";
-      var body  = data.volume + "€ per " + data.quantity + "Ƀ\n";
-      body  += data.time;
+      exec( cmd2jpy, function ( error, cmd2jpy_stdout, stderr ) {
+        var title = data.value + "€ ~ " + last_ten_avg + "€";
+        var body  = data.volume + "€ per " + data.quantity + "Ƀ\n";
+        body  = + cmd2jpy_stdout.trim() + "¥/" + cmd2usd_stdout.trim() + "$";
+        body  += data.time;
 
-      var cmd = "notify-send -i " + __dirname + "/trt32." + level( data.value ) + ".png '" + title + "' '" + body + "'";
-      console.log( cmd );
+        var cmd = "notify-send -i " + __dirname + "/trt32." + level( data.value ) + ".png '" + title + "' '" + body + "'";
+        console.log( cmd );
 
-      exec( cmd, function ( error, stdout, stderr ) {
-        // command output is in stdout
+        exec( cmd, function ( error, stdout, stderr ) {
+          // command output is in stdout
+        } );
       } );
     } );
   }
