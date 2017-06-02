@@ -55,7 +55,7 @@ channel.bind( 'last_trade', function ( data ) {
   if ( data.symbol === "BTCEUR" ) {
     var last_ten_avg = do_last_ten_avg( data.value );
     var cmd2usd      = "curl -s http://api.fixer.io/latest?base=EUR | jq '.rates.USD' | awk '{print $0*" + last_ten_avg + "}'";
-    var cmd2jpy      = "curl -s http://api.fixer.io/latest?base=EUR | jq '.rates.USD' | awk '{print $0*" + last_ten_avg + "}'";
+    var cmd2jpy      = "curl -s http://api.fixer.io/latest?base=EUR | jq '.rates.JPY' | awk '{print $0*" + last_ten_avg + "}'";
     exec( cmd2usd, function ( error, cmd2usd_stdout, stderr ) {
       exec( cmd2jpy, function ( error, cmd2jpy_stdout, stderr ) {
         var title = data.value + "€ ~ " + last_ten_avg + "€";
